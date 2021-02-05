@@ -5,7 +5,7 @@ Note: The swimmer info page may take a bit longer to load than your normal webpa
 
 ## Installation
 
-The requirements.txt file has all that is required to install correctly.
+The requirements.txt file has all that is required to install correctly. Please let me know if you have any issues!
 
 ## Technologies
 ```bash
@@ -14,3 +14,5 @@ Django 3.1.5
 Bootstrap 4.1.3
 HTML/CSS
 ```
+## Data
+All data was parsed from https://www.swimcloud.com/.
