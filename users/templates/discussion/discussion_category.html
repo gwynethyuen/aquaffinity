@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block page_content %}
+<div class="col-md-8 offset-md-2">
+    <h1>
+        {% if category == "1" %}
+            Announcements
+        {% elif category == "2" %}
+            Team Events
+        {% elif category == "3" %}
+            Academics
+        {% elif category == "4" %}
+            Swim/Dive
+        {% elif category == "5" %}
+            Misc
+        {% endif %}
+    </h1>
+    <hr>
+    {% for post in posts %}
+        <h2><a href="{% url 'discussion_detail' post.pk%}">{{ post.title }}</a></h2>
+        <small>
+            {{ post.created_on.date }}
+        </small>
+        <p>{{ post.body | slice:":400" }}...</p>
+    {% endfor %}
+</div>
+{% endblock %}

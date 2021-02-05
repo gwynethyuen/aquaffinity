@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Swimmers</h1>
+<div class="row">
+    {% if messages %}
+<ul class="messages" style="background-color:#ccc">
+  {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+      {{ message }}
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% for swimmer in swimmers %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static swimmer.image %}">
+            <div class="card-body">
+                <h5 class="card-title">{{ swimmer.title }}</h5>
+                <p class="card-text">{{ swimmer.description }}</p>
+                <a href="{% url 'swimmer_detail' swimmer.pk %}"
+                   class="btn btn-primary">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
