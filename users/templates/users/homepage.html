@@ -1,34 +1,23 @@
+<!--users/templates/users/homepage.html-->
 {% extends "base.html" %}
-{% load static %}
 {% block page_content %}
-<h1>Weclome to Your Team Homepage!</h1>
-<!-- {% if user.is_authenticated %}
-    <h2> Authenticated! <h2>
-{% endif %} -->
-<!-- <div class="row">
-    {% if messages %}
-<ul class="messages" style="background-color:#ccc">
-  {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-      {{ message }}
-    </li>
-  {% endfor %}
-</ul>
-{% endif %}
-{% for swimmer in swimmers %}
-    <div class="col-md-4">
-        <div class="card mb-2">
-            <img class="card-img-top" src="{% static swimmer.image %}">
-            <div class="card-body">
-                <h5 class="card-title">{{ swimmer.title }}</h5>
-                <p class="card-text">{{ swimmer.description }}</p>
-                <a href="{% url 'swimmer_detail' swimmer.pk %}"
-                   class="btn btn-primary">
-                    Read More
-                </a>
-            </div>
-        </div>
+    <div class="col-sm-8">
+        <h1>Welcome to Aquaffinity!</h1>
+        <hr style="width: 100%">
+        <p>This web application stores data from https:/www.swimcloud.com for a specific team, in this case, RPI, and allows easy access to recent times and swimmers. It also provides a discussion forum for users to interact with each other.</p>
     </div>
-    {% endfor %}
-</div> -->
-{% endblock %}
+
+Hello, {{ user.username|default:'Guest' }}!
+
+<div>
+    {% if user.is_authenticated %}
+	<div class="container" style="max-width: 100%; overflow-x: hidden">
+	</div>
+        <a href="{% url 'logout' %}">Logout</a>
+        <br>
+        <a href="{% url 'password_change' %}">Change password</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+</div>
+{% endblock page_content %}

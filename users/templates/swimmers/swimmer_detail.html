@@ -1,21 +1,24 @@
+<!--users/templates/swimmers/swimmer_detail.html-->
 {% extends "base.html" %}
 {% block page_content %}
-<div class="row">
-	<div class="col-sm-1"></div>
-	<div class="col-md-4">
-		<h3>About {{ swimmer.name }}</h3>
-        <p>Hometown: {{ swimmer.hometown }}</p>
-        {% if swimmer.class_year == "FR" %}
-        	<p>Class Year: {{ "Freshman" }}</p>
-        {% elif swimmer.class_year == "SO" %}
-        	<p>Class Year: {{ "Sophomore" }}</p>
-        {% elif swimmer.class_year == "JR" %}
-        	<p>Class Year: {{ "Junior" }}</p>
-        {% elif swimmer.class_year == "SR" %}
-        	<p>Class Year: {{ "Senior" }}</p>
-        {% endif %}
-        <h6>Latest times:</h6>
-        <p>{{ swimmer.event_list|linebreaksbr }}</p>
+    <div class="row">
+        <div class="col-sm-1"></div>
+            <div class="col-md-4">
+                <h3>About {{ swimmer.name }}</h3>
+                <p>Hometown: {{ swimmer.hometown }}</p>
+
+                {% if swimmer.class_year == "FR" %}
+                    <p>Class Year: {{ "Freshman" }}</p>
+                {% elif swimmer.class_year == "SO" %}
+                    <p>Class Year: {{ "Sophomore" }}</p>
+                {% elif swimmer.class_year == "JR" %}
+                    <p>Class Year: {{ "Junior" }}</p>
+                {% elif swimmer.class_year == "SR" %}
+                    <p>Class Year: {{ "Senior" }}</p>
+                {% endif %}
+
+                <h6>Latest times:</h6>
+                <p>{{ swimmer.event_list|linebreaksbr }}</p>
+            </div>
     </div>
-</div>
 {% endblock page_content %}

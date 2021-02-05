@@ -1,44 +1,35 @@
+<!--users/templates/swimmers/team_index.html-->
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<div class="col-md-8">
-    <h1>Swimmers</h1>
-    <hr style="width: 100%">
-</div>
-<div class="row">
-    {% if messages %}
-<ul class="messages" style="background-color:#ccc">
-  {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
-      {{ message }}
-    </li>
-  {% endfor %}
-</ul>
-{% endif %}
-{% for swimmer in swimmers %}
-    <div class="col-md-3">
-        <div class="card mb-2">
-            {# <img class="card-img-top" src="{% static swimmer.image %}"> #}
-            <div class="card-body">
-                <h5 class="card-title">{{ swimmer.name }}</h5>
-                {#<p class="card-text">{{ swimmer.hometown }}</p>#}
-                <p class='card-text'>
-                    {% if swimmer.class_year == "FR" %}
-                        Freshman
-                    {% elif swimmer.class_year == "SO" %}
-                        Sophomore
-                    {% elif swimmer.class_year == "JR" %}
-                        Junior
-                    {% elif swimmer.class_year == "SR" %}
-                        Senior
-                    {% endif %}
-                </p>
-                <a href="{% url 'swimmer_detail' pk=swimmer.id %}" class="btn btn-primary">
-                    Read More
-                </a>
-            </div>
-        </div>
+    <div class="col-md-8">
+        <h1>Swimmers</h1>
+        <hr style="width: 100%">
     </div>
-    {% endfor %}
-</div>
+
+    <div class="row" style="max-width: 90%; overflow-x: hidden; margin-left:20px">
+        {% for swimmer in swimmers %}
+            <div class="col-md-3">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ swimmer.name }}</h5>
+                        <p class='card-text'>
+                            {% if swimmer.class_year == "FR" %}
+                                Freshman
+                            {% elif swimmer.class_year == "SO" %}
+                                Sophomore
+                            {% elif swimmer.class_year == "JR" %}
+                                Junior
+                            {% elif swimmer.class_year == "SR" %}
+                                Senior
+                            {% endif %}
+                        </p>
+                        <a href="{% url 'swimmer_detail' pk=swimmer.id %}" class="btn btn-primary">
+                            Read More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock page_content %}

@@ -1,45 +1,51 @@
+<!--users/templates/discussion/discussion_index.html-->
 {% extends "base.html" %}
 {% block page_content %}
-<div class="col-md-8 offset-md-2">
-    <h1>Discussion</h1>
-    <hr>
-    {% for post in posts %}
-    <h2><a href="{% url 'discussion_detail' post.pk%}">{{ post.title }}</a></h2>
-    <small>
-        {{ post.created_on.date }} |&nbsp;
-        Category:&nbsp;
-        <a href="{% url 'discussion_category' post.category %}">
-            {% if post.category == "1" %}
-                Announcements
-            {% elif post.category == "2" %}
-                Team Events
-            {% elif post.category == "3" %}
-                Academics
-            {% elif post.category == "4" %}
-                Swim/Dive
-            {% elif post.category == "5" %}
-                Misc
-            {% endif %}
-        </a>&nbsp;
-    </small>
-    <p>{{ post.body | slice:":400" }}...</p>
-    {% endfor %}
+    <div class="col-md-8 offset-md-2">
+        <h1>Discussion</h1>
+        <hr>
+        {% for post in posts %}
+        <h2><a href="{% url 'discussion_detail' post.pk%}">{{ post.title }}</a></h2>
+        <small>
+            {{ post.created_on.date }} |&nbsp;
+            Category:&nbsp;
+            <a href="{% url 'discussion_category' post.category %}">
+                {% if post.category == "1" %}
+                    Announcements
+                {% elif post.category == "2" %}
+                    Team Events
+                {% elif post.category == "3" %}
+                    Academics
+                {% elif post.category == "4" %}
+                    Swim/Dive
+                {% elif post.category == "5" %}
+                    Misc
+                {% endif %}
+            </a>&nbsp;
+        </small>
+        <p>{{ post.body | slice:":400" }}...</p>
+        {% endfor %}
 
-    <form action="/discussion/" method="post">
-    {% csrf_token %}
-    <h4>Create a post!</h4>
-    <div class="form-group">
-        {{ form.title }}
+        <form action="/discussion/" method="post">
+        {% csrf_token %}
+            <h4>Create a post!</h4>
+            <div class="form-group">
+                {{ form.title }}
+            </div>
+
+            <div class="form-group">
+                {{ form.author }}
+            </div>
+
+            <div class="form-group">
+                {{ form.body }}
+            </div>
+
+            <div class="form-group">
+                {{ form.category }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-    <div class="form-group">
-        {{ form.author }}
-    </div>
-    <div class="form-group">
-        {{ form.body }}
-    </div>
-        <div class="form-group">
-        {{ form.category }}
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</div>
 {% endblock %}
