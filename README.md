@@ -1,6 +1,7 @@
 # Aquaffinity
 
 Aquaffinity is your all-in-one college swim team management app with the ability to post and discuss.
+Note: The swimmer info page may take a bit longer to load than your normal webpage - do not worry!
 
 ## Installation
 
