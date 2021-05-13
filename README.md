@@ -5,7 +5,7 @@ Note: The swimmer info page may take a bit longer to load than your normal webpa
 
 ## Installation
 
-The requirements.txt file has all that is required to install correctly. Please let me know if you have any issues!
+The ```requirements.txt``` file has all that is required to install correctly. Please let me know if you have any issues!
 <br>
 Detailed (Windows 10) Instructions:
   1. Download Python3 (if not already downloaded), Latest Release: https://www.python.org/downloads/release/python-387/
